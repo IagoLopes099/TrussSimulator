@@ -190,7 +190,7 @@ public class Trelica {
 
     }
 
-    //EQUAÇÕES AUXILIARES by CHAT GPT
+    //EQUAÇÕES AUXILIARES
     private double[] solveLinearSystem(double[][] A, double[] b) {
         int n = A.length;
         int m = A[0].length;

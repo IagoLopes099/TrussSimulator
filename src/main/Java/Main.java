@@ -3,7 +3,6 @@ package main.Java;
 import main.model.entities.No;
 import main.model.entities.Trelica;
 import main.model.enums.EnumRestricao;
-import main.model.exception.IndeterminacaoException;
 import main.model.valueObject.Forca;
 
 import java.util.Scanner;
@@ -105,6 +104,8 @@ public class Main {
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+
 
 
         sc.close();
