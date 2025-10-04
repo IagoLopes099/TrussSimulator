@@ -74,29 +74,44 @@ public class Main {
             EnumRestricao e;
             switch (Rest){
                 case "P":
-                    e = EnumRestricao.PINADO;
+                    e = EnumRestricao.P;
                     trelica.setRestricao(e, i);
                     break;
                 case "X":
-                    e = EnumRestricao.APOIADOVERTICAL;
+                    e = EnumRestricao.Y;
                     trelica.setRestricao(e, i);
                     break;
                 case "Y":
-                    e = EnumRestricao.APOIADOHORINZONTAL;
+                    e = EnumRestricao.X;
                     trelica.setRestricao(e, i);
                     break;
                 case "N":
-                    e = EnumRestricao.LIVRE;
+                    e = EnumRestricao.N;
                     trelica.setRestricao(e, i);
                     break;
                 default:
-                    e = EnumRestricao.ENGASTADO;
+                    e = EnumRestricao.E;
                     trelica.setRestricao(e, i);
                     break;
             }
 
         }
 
+        // MODIFICAÇÕES INICIO -------------------
+        // Recebendo área da seção e Young's module (Módulo de Elasticidade)
+        String linhaPropriedades = sc.nextLine();
+        String[] partesPropriedades = linhaPropriedades.split(";");
+        double areaSecao = Double.parseDouble(partesPropriedades[0].trim());
+        double youngsModule = Double.parseDouble(partesPropriedades[1].trim()); // MUDEI O NOME
+
+        // Passando para a treliça
+        trelica.setAreaSecao(areaSecao);
+        trelica.setModuloElasticidade(youngsModule); // USA youngsModule AQUI
+        trelica.setLimiteElasticidade(250000000); // Valor fixo para aço
+
+        // MODIFICAÇÕES FINAIS -------------------
+
+        /*
         System.out.println(trelica);
         try{
             trelica.ResolverTrelica();
@@ -104,7 +119,17 @@ public class Main {
         }catch (Exception e) {
             System.out.println(e.getMessage());
         }
+         */
 
+        // teste final
+        try{
+            trelica.ResolverTrelicaDeformada();
+
+            //trelica.CalcularTrelicaDeformada();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
 
 

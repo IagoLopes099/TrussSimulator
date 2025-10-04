@@ -10,24 +10,24 @@ public class Reacao {
 
     public Reacao(EnumRestricao e){
         switch (e){
-            case PINADO:
+            case P:
                 this.M = 0;
                 nReacao += 2;
                 break;
-            case APOIADOHORINZONTAL:
+            case X:
                 this.M = 0;
                 this.Rx =0;
                 nReacao +=  1;
                 break;
-            case APOIADOVERTICAL:
+            case Y:
                 this.M = 0;
                 this.Ry = 0;
                 nReacao +=  1;
-            case LIVRE:
+            case N:
                 this.M =0;
                 this.Ry =0;
                 this.Rx =0;
-            case ENGASTADO:
+            case E:
                 nReacao +=3;
                 break;
         }

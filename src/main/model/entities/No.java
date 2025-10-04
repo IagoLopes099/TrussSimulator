@@ -19,7 +19,7 @@ public class No {
         this.y = y;
         this.letra = letra;
         this.posicao = p;
-        this.restricao = EnumRestricao.LIVRE; // estou setando livre como padrão para garantir que foi colcoado uma restrição
+        this.restricao = EnumRestricao.N; // estou setando livre como padrão para garantir que foi colcoado uma restrição
         rec = new Reacao(restricao);
     }
 

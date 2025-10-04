@@ -7,6 +7,13 @@ public class Elemento {
     private double sen;
     private double tamanho;
 
+    // ------NOVOS PARAMETROS
+    private double forcaAxial; // Nova propriedade para armazenar a força axial
+    private double tensao;     // Tensão na barra
+    private double deformacao; // Deformação específica
+
+    //-------FIM DOS NOVOS PARAMETROS
+
     public Elemento(int a, int b) {
         this.a = a;
         this.b = b;
@@ -48,6 +55,34 @@ public class Elemento {
         return tamanho;
     }
 
+    //-------------INICIO DOS NOVOS GETS E SETTERS
+    public double getForcaAxial() {
+        return forcaAxial;
+    }
+
+    public void setForcaAxial(double forcaAxial) {
+        this.forcaAxial = forcaAxial;
+    }
+
+    public double getTensao() {
+        return tensao;
+    }
+
+    public void setTensao(double tensao) {
+        this.tensao = tensao;
+    }
+
+    public double getDeformacao() {
+        return deformacao;
+    }
+
+    public void setDeformacao(double deformacao) {
+        this.deformacao = deformacao;
+    }
+
+    //--------------FIM DOS NOVOS GETTERS E SETTES
+
+
     public void setParametros(No[] no, int i, int j) {
         double dx = no[j].getX() - no[i].getX();
         double dy = no[j].getY() - no[i].getY();
@@ -59,6 +94,15 @@ public class Elemento {
 
         }catch (ArithmeticException e){
             throw new ArithmeticException("Elemento de tamanho 0!");
+        }
+    }
+
+    // ------------------novo metodo
+
+    public void calcularTensaoDeformacao(double areaSecao, double moduloElasticidade) {
+        if (areaSecao > 0) {
+            this.tensao = forcaAxial / areaSecao;
+            this.deformacao = tensao / moduloElasticidade;
         }
     }
 }
